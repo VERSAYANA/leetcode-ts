@@ -21,5 +21,8 @@
   "homepage": "https://github.com/VERSAYANA/leetcode-ts#readme",
   "devDependencies": {
     "prettier": "2.5.1"
+  },
+  "dependencies": {
+    "typescript": "^4.9.3"
   }
 }
