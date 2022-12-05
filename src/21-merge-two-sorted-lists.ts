@@ -18,11 +18,12 @@ function mergeTwoLists(
       list1.next = mergeTwoLists(list1.next, list2);
       return list1;
     } else {
-      list2 = mergeTwoLists(list1, list2.next);
+      list2.next = mergeTwoLists(list1, list2.next);
       return list2;
     }
   }
 }
+
 const arrayToLinkedList = (arr: number[]): ListNode | null => {
   let result = null;
   for (let i = arr.length - 1; i >= 0; i--) {
