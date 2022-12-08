@@ -5,27 +5,22 @@
  * };
  */
 
-const solution1 = function (isBadVersion: any) {
+const solution = function (isBadVersion: any) {
   return function (n: number): number {
     let left = 1;
     let right = n;
-    if (isBadVersion(1)) {
-      return 1;
-    }
-    while (left < right) {
+    while (left <= right) {
       let middle = Math.floor(left + (right - left) / 2);
-      if (isBadVersion(middle) === true) {
-        if (isBadVersion(middle - 1) === false) {
-          return middle;
-        }
+      const isMiddleBadVersion = isBadVersion(middle);
+      if (isMiddleBadVersion && !isBadVersion(middle - 1)) {
+        return middle;
+      } else if (isMiddleBadVersion) {
         right = middle - 1;
       } else {
-        if (isBadVersion(middle + 1) === true) {
-          return middle + 1;
-        }
         left = middle + 1;
       }
     }
+    return -1;
   };
 };
 
