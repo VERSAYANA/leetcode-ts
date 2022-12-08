@@ -33,3 +33,21 @@ function search2(nums: number[], target: number): number {
 
   return recursiveSearch(0, nums.length - 1);
 }
+
+function search3(nums: number[], target: number): number {
+  let rightIndex = nums.length - 1;
+  let leftIndex = 0;
+  while (leftIndex <= rightIndex) {
+    const middleIndex = Math.floor((rightIndex + leftIndex) / 2);
+    const middle = nums[middleIndex];
+    if (middle === target) {
+      return middleIndex;
+    } else if (target > middle) {
+      leftIndex = middleIndex + 1;
+    } else {
+      rightIndex = middleIndex - 1;
+    }
+  }
+
+  return -1;
+}
