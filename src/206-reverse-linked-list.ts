@@ -17,3 +17,12 @@ const reverseArrayToLinkedList = (arr: number[]): ListNode | null => {
   }
   return result;
 };
+
+function reverseList2(head: ListNode | null): ListNode | null {
+  let reversedList = null;
+  while (head !== null) {
+    reversedList = new ListNode(head.val, reversedList);
+    head = head.next;
+  }
+  return reversedList;
+}
