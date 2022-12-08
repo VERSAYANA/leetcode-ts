@@ -1,42 +1,50 @@
 import { TreeNode } from './utils';
 
 function levelOrder(root: TreeNode | null): number[][] {
-  let result: number[][] = [];
+  const result: number[][] = [];
 
   if (root === null) {
     return [];
-  } else {
-    result = [[root.val]];
   }
 
-  function traverse(node: TreeNode, level: number) {
-    if (node.left && node.right) {
-      if (result[level]) {
-        result[level].push(node.left.val, node.right.val);
-      } else {
-        result[level] = [node.left.val, node.right.val];
-      }
-      traverse(node.left, level + 1);
-      traverse(node.right, level + 1);
-    } else if (node.left && !node.right) {
-      if (result[level]) {
-        result[level].push(node.left.val);
-      } else {
-        result[level] = [node.left.val];
-      }
+  function traverse(node: TreeNode | null, level: number): void {
+    if (node === null) return;
 
-      traverse(node.left, level + 1);
-    } else if (!node.left && node.right) {
-      if (result[level]) {
-        result[level].push(node.right.val);
-      } else {
-        result[level] = [node.right.val];
-      }
-      traverse(node.right, level + 1);
+    if (result[level]) {
+      result[level].push(node.val);
+    } else {
+      result[level] = [node.val];
     }
+
+    traverse(node.left, level + 1);
+    traverse(node.right, level + 1);
   }
 
-  traverse(root, 1);
+  traverse(root, 0);
+
+  return result;
+}
+
+function levelOrder2(root: TreeNode | null): number[][] {
+  if (root === null) return [];
+
+  const result: number[][] = [];
+  const queue = [root];
+
+  while (queue.length > 0) {
+    const level = [];
+    const levelLength = queue.length;
+
+    for (let i = 0; i < levelLength; i++) {
+      const node = queue.shift();
+      level.push(node!.val);
+
+      if (node!.left) queue.push(node!.left);
+      if (node!.right) queue.push(node!.right);
+    }
+
+    result.push(level);
+  }
 
   return result;
 }
