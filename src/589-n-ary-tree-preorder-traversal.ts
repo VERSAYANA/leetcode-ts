@@ -18,3 +18,16 @@ function preorder(root: Node | null): number[] {
 
   return result;
 }
+
+function preorder2(root: Node | null): number[] {
+  if (!root) {
+    return [];
+  }
+
+  const result = [root.val];
+  for (const child of root.children) {
+    result.push(...preorder(child));
+  }
+
+  return result;
+}
