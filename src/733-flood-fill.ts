@@ -47,8 +47,8 @@ function floodFill2(image: number[][], sr: number, sc: number, color: number): n
 }
 
 function floodFill3(image: number[][], sr: number, sc: number, color: number): number[][] {
-  const currentColor = image[sr][sc];
-  if (color === currentColor) return image;
+  const oldColor = image[sr][sc];
+  if (color === oldColor) return image;
 
   function dfs(row: number, column: number): void {
     if (
@@ -56,7 +56,7 @@ function floodFill3(image: number[][], sr: number, sc: number, color: number): n
       row < image.length &&
       column >= 0 &&
       column < image[0].length &&
-      image[row][column] === currentColor
+      image[row][column] === oldColor
     ) {
       image[row][column] = color;
       dfs(row - 1, column);
