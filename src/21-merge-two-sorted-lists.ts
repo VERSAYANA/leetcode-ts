@@ -1,9 +1,6 @@
 import { ListNode } from './utils';
 
-function mergeTwoLists(
-  list1: ListNode | null,
-  list2: ListNode | null
-): ListNode | null {
+function mergeTwoLists(list1: ListNode | null, list2: ListNode | null): ListNode | null {
   if (list1 === null) return list2;
   else if (list2 === null) return list1;
   else {
@@ -16,13 +13,3 @@ function mergeTwoLists(
     }
   }
 }
-
-const arrayToLinkedList = (arr: number[]): ListNode | null => {
-  let result = null;
-  for (let i = arr.length - 1; i >= 0; i--) {
-    result = new ListNode(arr[i], result);
-  }
-  return result;
-};
-
-mergeTwoLists(arrayToLinkedList([1, 2, 4]), arrayToLinkedList([1, 3, 4]));
