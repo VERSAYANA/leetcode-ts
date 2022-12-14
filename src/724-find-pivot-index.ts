@@ -8,8 +8,8 @@ function pivotIndex(nums: number[]): number {
   }
 
   for (let i = 0; i < nums.length; i++) {
-    const leftSum = sumMap.get(i) - nums[i];
-    const rightSum = sum - sumMap.get(i);
+    const leftSum = sumMap.get(i)! - nums[i];
+    const rightSum = sum - sumMap.get(i)!;
     if (leftSum === rightSum) {
       return i;
     }

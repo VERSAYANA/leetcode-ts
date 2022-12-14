@@ -26,6 +26,8 @@ function searchInsert1(nums: number[], target: number): number {
       right = middle - 1;
     }
   }
+
+  return left;
 }
 
 function searchInsert2(nums: number[], target: number): number {
@@ -42,5 +44,3 @@ function searchInsert2(nums: number[], target: number): number {
   }
   return left;
 }
-
-searchInsert2([1, 3, 5, 6], 5);
