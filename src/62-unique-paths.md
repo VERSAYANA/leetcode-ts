@@ -22,7 +22,6 @@ Time complexity: $$O(m + n)$$ Space complexity: $$O(1)$$
 
 ---
 
-Even tho preceding solution has a great time & space complexity it has one problem. We are not utlizing the fact that $$x! = x * (x - 1)!$$ we are calculating each factorial seperatly, so we are doing a bunch of repeated calculations.
 Even though the previous solution has a good time and space complexity, it has one drawback. We are not making use of the fact that $$x! = x * (x - 1)!$$, which means that we are performing many unnecessary calculations by calculating each factorial independently from the start.
 
 To avoid repeating the same multiplications, we can use an array to store the previously calculated factorials:
