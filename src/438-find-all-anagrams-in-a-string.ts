@@ -35,12 +35,7 @@ function isAnagram(
 function createCharacterFrequencyMap(str: string): Map<string, number> {
   const characterFrequencyMap = new Map<string, number>();
   for (const character of str) {
-    const characterFrequency = characterFrequencyMap.get(character);
-    if (characterFrequency) {
-      characterFrequencyMap.set(character, characterFrequency + 1);
-    } else {
-      characterFrequencyMap.set(character, 1);
-    }
+    characterFrequencyMap.set(character, (characterFrequencyMap.get(character) || 0) + 1);
   }
 
   return characterFrequencyMap;
@@ -52,15 +47,7 @@ function updateCharacterFrequencyMap(
   newCharacter: string
 ): Map<string, number> {
   characterFrequencyMap.set(oldCharacter, characterFrequencyMap.get(oldCharacter)! - 1);
-  const newCharacterFrequency = characterFrequencyMap.get(newCharacter);
-  if (newCharacterFrequency) {
-    characterFrequencyMap.set(newCharacter, newCharacterFrequency + 1);
-  } else {
-    characterFrequencyMap.set(newCharacter, 1);
-  }
+  characterFrequencyMap.set(newCharacter, (characterFrequencyMap.get(newCharacter) || 0) + 1);
+
   return characterFrequencyMap;
 }
-const s = 'cbaebabacd';
-const p = 'abc';
-const r = findAnagrams(s, p);
-console.log(r);
